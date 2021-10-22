@@ -28,13 +28,13 @@ function STLViewer(elem, model) {
     controls.rotateSpeed = 0.9;
     controls.dampingFactor = 0.1;
     controls.enableZoom = true;
-    controls.enablePan = false;
-    controls.autoRotate = false;
-    controls.autoRotateSpeed = 5;
+    controls.enablePan = true;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 3;
 
     var scene = new THREE.Scene();
 
-    var light = new THREE.HemisphereLight(0x231f20, 0xffffff, 1);
+    var light = new THREE.HemisphereLight(0x231f20, 0xffffff, 0.7);
     scene.add(light);
     (new THREE.STLLoader()).load(model, function(geometry) {
         var material = new THREE.MeshPhongMaterial({ color: 0xffffff, specular: 100, shininess: 100 });
