@@ -12,7 +12,7 @@ function STLViewer(elem, model) {
         return;
     }
 
-    var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    var renderer = new THREE.WebGLRenderer({ alpha: true });
     var camera = new THREE.PerspectiveCamera(75, elem.clientWidth / elem.clientHeight, 0.001, 1000);
     renderer.setSize(elem.clientWidth, elem.clientHeight);
     elem.appendChild(renderer.domElement);
@@ -25,7 +25,7 @@ function STLViewer(elem, model) {
 
     var controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
-    controls.rotateSpeed = 0.5;
+    controls.rotateSpeed = 0.9;
     controls.dampingFactor = 0.1;
     controls.enableZoom = true;
     controls.enablePan = false;
@@ -34,7 +34,7 @@ function STLViewer(elem, model) {
 
     var scene = new THREE.Scene();
 
-    var light = new THREE.HemisphereLight(0xffffff, 0x000000, 1);
+    var light = new THREE.HemisphereLight(0x000000, 0xffffff, 1);
     scene.add(light);
     (new THREE.STLLoader()).load(model, function(geometry) {
         var material = new THREE.MeshPhongMaterial({ color: 0xffffff, specular: 100, shininess: 100 });
@@ -53,8 +53,9 @@ function STLViewer(elem, model) {
 
         // Pull the camera away as needed
         var largestDimension = Math.max(geometry.boundingBox.max.x,
-            geometry.boundingBox.max.y, geometry.boundingBox.max.z)
-        camera.position.z = largestDimension * 1.5;
+                geometry.boundingBox.max.y, geometry.boundingBox.max.z)
+            //camera.position.z = largestDimension * 1.25;
+        camera.position.y = -largestDimension * 1.30;
 
 
         var animate = function() {
