@@ -13,7 +13,7 @@ function STLViewer(elem, model) {
     }
 
     var renderer = new THREE.WebGLRenderer({ alpha: true });
-    var camera = new THREE.PerspectiveCamera(75, elem.clientWidth / elem.clientHeight, 0.001, 1000);
+    var camera = new THREE.PerspectiveCamera(95, elem.clientWidth / elem.clientHeight, 0.001, 1000);
     renderer.setSize(elem.clientWidth, elem.clientHeight);
     elem.appendChild(renderer.domElement);
 
