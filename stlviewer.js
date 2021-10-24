@@ -23,18 +23,17 @@ function STLViewer(elem, model) {
         camera.updateProjectionMatrix();
     }, false);
 
+    //object properties
     var controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.rotateSpeed = 0.9;
     controls.dampingFactor = 0.1;
     controls.enableZoom = true;
     controls.enablePan = true;
-    controls.autoRotate = true;
-    controls.autoRotateSpeed = 3;
 
     var scene = new THREE.Scene();
 
-    var light = new THREE.HemisphereLight(0x231f20, 0xffffff, 0.7);
+    var light = new THREE.HemisphereLight(0x231f20, 0xe3dac9, 0.7);
     scene.add(light);
     (new THREE.STLLoader()).load(model, function(geometry) {
         var material = new THREE.MeshPhongMaterial({ color: 0xffffff, specular: 100, shininess: 100 });
